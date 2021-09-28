@@ -47,6 +47,11 @@
     <artifactId>okhttp</artifactId>
     <version>3.4.2</version>
 </dependency>
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>jakarta.persistence</artifactId>
+			<version>2.2.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -12,6 +12,7 @@ public class TCPPutRequest {
 	private static int port = 8080;
 	private static String host = "localhost";
 	private static String uri = "/counters";
+	private static String todoUri = "/todo";
 
 	public static void main(String[] args) {
 
@@ -23,7 +24,7 @@ public class TCPPutRequest {
 			String jsonbody = counters.toJson();
 
 			String httpputrequest = 
-					"PUT " + uri + " HTTP/1.1\r\n" + 
+					"PUT " + todoUri + " HTTP/1.1\r\n" +
 			        "Host: " + host + "\r\n" +
 					"Content-type: application/json\r\n" + 
 			        "Content-length: " + jsonbody.length() + "\r\n" +

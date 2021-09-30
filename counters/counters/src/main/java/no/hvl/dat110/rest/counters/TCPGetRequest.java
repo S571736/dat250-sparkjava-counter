@@ -12,13 +12,14 @@ public class TCPGetRequest {
 	private static int port = 8080;
 	private static String host = "localhost";
 	private static String uri = "/counters";
+	private static String todoUri = "/todo";
 
 	public static void main(String[] args) {
 
 		try (Socket s = new Socket(host, port)) {
 
 			// construct the GET request
-			String httpgetrequest = "GET " + uri + " HTTP/1.1\r\n" + "Accept: application/json\r\n"
+			String httpgetrequest = "GET " + todoUri + " HTTP/1.1\r\n" + "Accept: application/json\r\n"
 					+ "Host: localhost\r\n" + "Connection: close\r\n" + "\r\n";
 
 			// sent the HTTP request

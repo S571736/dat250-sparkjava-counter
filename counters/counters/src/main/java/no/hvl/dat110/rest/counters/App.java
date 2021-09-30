@@ -14,7 +14,7 @@ import static spark.Spark.*;
 public class App {
 	
 	static Counters counters = null;
-	static List<Todo> todoList = null;
+	static List<Todo> todoList;
 	
 	public static void main(String[] args) {
 
@@ -32,8 +32,15 @@ public class App {
   		});
 		
 		get("/hello", (req, res) -> "Hello World!");
-		
-        get("/counters", (req, res) -> counters.toJson());
+
+
+        get("/counters", (req, res) -> {
+            Gson gson = new Gson();
+
+            String jsonString = gson.toJson(todoList);
+
+            return jsonString;
+        });
  
         get("/counters/red", (req, res) -> counters.getRed());
 
@@ -74,12 +81,10 @@ public class App {
         	return gson.toJson(todo);
 		});
 
-        post("/todo/*", (request, response) -> {
+        post("/todo", (request, response) -> {
         	Gson gson = new Gson();
 
         	Todo todo = gson.fromJson(request.body(), Todo.class);
-
-        	todoList.add(todo);
 
         	return gson.toJson(todo);
 		});

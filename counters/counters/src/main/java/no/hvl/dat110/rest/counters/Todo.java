@@ -1,5 +1,7 @@
 package no.hvl.dat110.rest.counters;
 
+import com.google.gson.Gson;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +35,14 @@ public class Todo {
     public String toString() {
         return "Todo [summary=" + summary + ", description=" + description
                 + "]";
+    }
+
+    public String toJson() {
+        Gson gson = new Gson();
+
+        String jsonString = gson.toJson(this);
+
+        return jsonString;
     }
 
 }

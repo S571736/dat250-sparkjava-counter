@@ -21,7 +21,7 @@ public class PutRequest {
 
 		RequestBody body = RequestBody.create(JSON, counters.toJson());
 		
-		Request request = new Request.Builder().url("http://localhost:8080/counters").put(body).build();
+		Request request = new Request.Builder().url("http://localhost:8080/todo").put(body).build();
 
 		System.out.println(request.toString());
 

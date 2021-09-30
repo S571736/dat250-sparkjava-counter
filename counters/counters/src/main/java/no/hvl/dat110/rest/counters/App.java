@@ -66,25 +66,26 @@ public class App {
         	return jsonString;
 		});
 
-        put("/todo/*", (request, response) -> {
+        put("/todo", (request, response) -> {
         	Gson gson = new Gson();
 
-        	int index = Integer.parseInt(request.splat()[0])-1;
-
-        	Todo todo = todoList.get(index);
-
         	Todo todoUpdate = gson.fromJson(request.body(), Todo.class);
-
-        	todo.setDescription(todoUpdate.getDescription());
-        	todo.setSummary(todoUpdate.getSummary());
-
-        	return gson.toJson(todo);
+			for (Todo todo:todoList) {
+				if (todoUpdate.getSummary().equals(todo.getSummary())) {
+					todoList.remove(todo);
+					todoList.add(todoUpdate);
+					return gson.toJson(todoList);
+				}
+			}
+			return "Could not find the element you were looking for";
 		});
 
         post("/todo", (request, response) -> {
         	Gson gson = new Gson();
 
         	Todo todo = gson.fromJson(request.body(), Todo.class);
+
+        	todoList.add(todo);
 
         	return gson.toJson(todo);
 		});
